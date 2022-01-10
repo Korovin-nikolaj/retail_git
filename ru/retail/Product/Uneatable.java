@@ -1,6 +1,8 @@
-package ru.retail.product;
+package ru.retail.Product;
 
-public class Uneatable extends Product{
+import ru.retail.Product.Product;
+
+public class Uneatable extends Product {
 
     private String country;
 

@@ -1,6 +1,6 @@
 package ru.retail;
 
-import ru.retail.product.Product;
+import ru.retail.Product.Product;
 
 public class Client {
 

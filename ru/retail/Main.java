@@ -1,7 +1,7 @@
 package ru.retail;
 
-import ru.retail.product.Eatable;
-import ru.retail.product.Uneatable;
+import ru.retail.Product.Eatable;
+import ru.retail.Product.Uneatable;
 
 public class Main {
 

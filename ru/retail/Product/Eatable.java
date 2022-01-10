@@ -1,6 +1,8 @@
-package ru.retail.product;
+package ru.retail.Product;
 
-public class Eatable extends Product{
+import ru.retail.Product.Product;
+
+public class Eatable extends Product {
 
     private String experationDate;
 
