@@ -44,7 +44,7 @@ public class Main {
             order.sendToClient();
             order.setState("Доставлено");
             System.out.println("Заказу выставлен статус " + order.getState());
-            System.out.printf("Заказ доставлен по адресу " + order.getDeliveryAdress() + " " + order.getDeliveryDate());
+            System.out.println("Заказ доставлен по адресу " + order.getDeliveryAdress() + " " + order.getDeliveryDate());
         }
     }
 }
