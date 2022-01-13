@@ -26,13 +26,13 @@ public class BarCode {
     public void changePrice(float delta) {
         float oldPrice = price;
         price = price + delta;
-        System.out.println("Изменили цену продукта " + id + " Было " + oldPrice + " Стало " + price);
+        System.out.println("Изменили цену продукта под № " + id + ": Было " + oldPrice + " Стало " + price);
     }
 
     // пример вызова milk.changePriceToPercent((byte)10);
     public void changePriceToPercent(byte percent) {
         float oldPrice = price;
         price = price + price * (percent / 100);
-        System.out.println("Изменили цену продукта " + id + " Было " + oldPrice + " Стало " + price);
+        System.out.println("Изменили цену продукта под № " + id + ": Было " + oldPrice + " Стало " + price);
     }
 }
