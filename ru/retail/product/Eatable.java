@@ -1,6 +1,6 @@
-package ru.retail.Product;
+package ru.retail.product;
 
-//import ru.retail.Product.Product;
+//import ru.retail.product.product;
 
 public class Eatable extends Product {
 

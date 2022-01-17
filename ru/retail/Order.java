@@ -1,6 +1,6 @@
 package ru.retail;
 
-import ru.retail.Product.Product;
+import ru.retail.product.Product;
 
 public class Order {
 
@@ -117,7 +117,7 @@ public class Order {
     }
 
 //    public void setProductsState(String state) {
-//        for (Product currentProduct : productList) {
+//        for (product currentProduct : productList) {
 //            if (currentProduct != null) {
 //                currentProduct.setState(state);
 //            }
