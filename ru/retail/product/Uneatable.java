@@ -1,6 +1,4 @@
-package ru.retail.Product;
-
-import ru.retail.Product.Product;
+package ru.retail.product;
 
 public class Uneatable extends Product {
 

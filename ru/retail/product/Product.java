@@ -1,4 +1,4 @@
-package ru.retail.Product;
+package ru.retail.product;
 
 import ru.retail.BarCode;
 import ru.retail.Storage;
