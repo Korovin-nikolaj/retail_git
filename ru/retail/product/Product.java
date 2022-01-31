@@ -3,7 +3,7 @@ package ru.retail.product;
 import ru.retail.BarCode;
 import ru.retail.Storage;
 
-public class Product {
+public class Product{
 
     private String name;
     private String state;
@@ -38,4 +38,6 @@ public class Product {
     public BarCode getBarCode() {
         return barCode;
     }
+
+
 }
