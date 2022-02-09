@@ -3,11 +3,14 @@ package ru.retail.product;
 import ru.retail.BarCode;
 import ru.retail.Storage;
 
+import java.util.HashSet;
+
 public class Product{
 
     private String name;
     private String state;
     private BarCode barCode;
+
 
     public Product(String name, String id, float price) {
         this.name = name;
@@ -20,7 +23,7 @@ public class Product{
 
     public void setState(String state) {
         this.state = state;
-        System.out.println("Товару " + this.name + " установлен статус " + state);
+        //System.out.println("Товару " + this.name + " установлен статус " + state);
     }
 
     public float getPrice() {
@@ -32,7 +35,10 @@ public class Product{
     }
 
     public void mov(Storage storage) {
-        System.out.println("Товар " + name + " перемещен на " + storage.getName());
+
+        if (!storage.getSetOfProducts().add(this)) {
+            System.out.println("Товар " + name + " не перемещен в " + storage.getName());
+        }
     }
 
     public BarCode getBarCode() {
