@@ -52,6 +52,11 @@ public class Order {
     public void packProducts(Storage storage){
         setProductsState("Упакован для доставки на месте хранения " + storage.getName());
         state = "Заказ собран";
+        for (Product product:productList) {
+            if (storage.getSetOfProducts().contains(product)){
+                storage.getSetOfProducts().remove(product);
+            }
+        }
     }
 
     public Delivery sendToDelivery() {

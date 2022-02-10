@@ -14,7 +14,16 @@ public class Main {
         Storage storage = new Storage("Склад");
 
         Eatable.buildEatable("Молоко", "260123435", 20.5f, "10.12.21", storage, lisfOfStoreProducts);
-        Eatable milk = null;//(Eatable) lisfOfStoreProducts.get(10);
+        Eatable milk = Eatable.getRandomEatable("Молоко", "260123435", 20.5f, "10.12.21");
+        if (lisfOfStoreProducts.contains(milk)) {
+            milk.setState("В наличии");
+            for (int i = 0; i < 1000; i++) {
+                if (lisfOfStoreProducts.get(i).equals(milk)) {
+                    System.out.println("Индекс товара " + i);
+                    break;
+                }
+            }
+        }
         //milk.getBarCode().changePriceToPercent((byte)10);
         Uneatable toy = Uneatable.buildUneatable("Кукла Барби", "263123312", 600, "Китай", storage);
         toy.getBarCode().changePrice(100f);

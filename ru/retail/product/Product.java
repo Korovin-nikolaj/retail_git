@@ -3,7 +3,7 @@ package ru.retail.product;
 import ru.retail.BarCode;
 import ru.retail.Storage;
 
-import java.util.HashSet;
+import java.util.Objects;
 
 public class Product{
 
@@ -45,5 +45,25 @@ public class Product{
         return barCode;
     }
 
+    @Override
+    public String toString() {
+        return "name='" + name + '\'' +
+                ", state='" + state + '\'' +
+                ", barCode=" + barCode.getId() + '\'';
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        return name != null ? name.equals(product.name) : product.name == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
+    }
 }

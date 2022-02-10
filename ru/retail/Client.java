@@ -20,7 +20,7 @@ public class Client {
             product.setState("Выбран");
             order.addToOrder(product);
         } else {
-            System.out.printf("Товара " + product.getName() + " нет в наличии.");
+            System.out.println("Товара " + product.getName() + " нет в наличии.");
         }
     }
 
