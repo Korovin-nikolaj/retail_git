@@ -10,6 +10,10 @@ import java.util.List;
 public class Main {
     public static List<Product> lisfOfStoreProducts;
     public static void main(String[] args) {
+        workRetail();
+    }
+
+    public static void workRetail(){
         lisfOfStoreProducts = new ArrayList<Product>();
         Storage storage = new Storage("Склад");
 
@@ -60,7 +64,6 @@ public class Main {
             System.out.println("Заказ доставлен по адресу " + order.getDeliveryAdress() + " " + order.getDeliveryDate());
         }
     }
-
 
 
 

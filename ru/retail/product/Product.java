@@ -49,7 +49,8 @@ public class Product{
     public String toString() {
         return "name='" + name + '\'' +
                 ", state='" + state + '\'' +
-                ", barCode=" + barCode.getId() + '\'';
+                ", barCode=" + barCode.getId() + '\''+
+                ", price=" + barCode.getPrice()+ '\'';
     }
 
     @Override
