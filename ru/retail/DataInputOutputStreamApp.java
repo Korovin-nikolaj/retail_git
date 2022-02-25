@@ -10,7 +10,7 @@ public class DataInputOutputStreamApp {
     private static String CATALOG_NAME = "file/";
     private static String EXTENSION = ".txt";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MyException{
         File catalog = new File(CATALOG_NAME);
         if (catalog.exists() == false) {
             catalog.mkdir();
@@ -30,7 +30,7 @@ public class DataInputOutputStreamApp {
         }
     }
 
-    private static void dbWrite(Scanner sc) {
+    private static void dbWrite(Scanner sc) throws MyException{
         System.out.println("Введите имя товара:");
         String productName = sc.next();
         try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(CATALOG_NAME+productName+EXTENSION, true))) {
@@ -39,7 +39,8 @@ public class DataInputOutputStreamApp {
             dos.writeUTF(sc.next());
             System.out.println("Введите цену");
             dos.writeFloat(sc.nextFloat());
-        } catch (IOException e) {
+            throw new MyException("Мое исключение");
+        } catch (IOException|MyException e) {
             e.printStackTrace();
         }
     }
@@ -52,7 +53,7 @@ public class DataInputOutputStreamApp {
             System.out.println(p);
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Данный товар не найдена," + productName + " введи ее повторно: ");
+            System.out.println("Данный товар не найдена," + productName + " введи его повторно: ");
             dbRead(sc);
         }
     }
