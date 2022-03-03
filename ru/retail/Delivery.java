@@ -5,7 +5,7 @@ public class Delivery {
     private String id;
     private String deliveryDate;
     private String deliveryAdress;
-    private Float money = 0f;
+    private float money = 0f;
 
     public Delivery(String id, String deliveryDate, String deliveryAdress) {
         this.id = id;
@@ -28,7 +28,7 @@ public class Delivery {
         order.setState("Оплачено");
     }
 
-    public Float getMoney() {
+    public float getMoney() {
         return money;
     }
 }
