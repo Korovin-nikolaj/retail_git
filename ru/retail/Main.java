@@ -15,7 +15,7 @@ public class Main {
 
     public static void workRetail(){
         lisfOfStoreProducts = new ArrayList<Product>();
-        Storage storage = new Storage("Склад");
+        Storage storage = Storage.getInstance();
 
         Eatable.buildEatable("Молоко", "260123435", 20.5f, "10.12.21", storage, lisfOfStoreProducts);
         Eatable milk = Eatable.getRandomEatable("Молоко", "260123435", 20.5f, "10.12.21");

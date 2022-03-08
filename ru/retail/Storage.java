@@ -6,14 +6,21 @@ import java.util.HashSet;
 
 public class Storage {
 
+    private static Storage instance;
     private String name;
     private boolean taskExists;
     private HashSet<Product> setOfProducts;
 
-    public Storage(String name){
-        this.name = name;
+    private Storage(){
+        this.name = "Основной склад";
         this.setOfProducts = new HashSet<Product>();
+    }
 
+    public static Storage getInstance() {
+        if (instance == null){
+            instance = new Storage();
+        }
+        return instance;
     }
 
     public String getName() {

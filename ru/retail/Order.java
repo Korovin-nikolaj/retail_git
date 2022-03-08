@@ -2,13 +2,10 @@ package ru.retail;
 
 import ru.retail.product.Product;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
 public class Order {
 
-    private List<Product> productList;
+    private Product[] productList;
+    private int currentLineOrder;
     private String state;
     private Client client;
     private Payment payment;
@@ -16,11 +13,17 @@ public class Order {
     private String deliveryAdress;
 
     public Order() {
-        productList = new ArrayList<Product>();
+        productList = new Product[10];
+        currentLineOrder = 1;
     }
 
     public void addToOrder(Product product) {
-        productList.add(product);
+        if (currentLineOrder > 10) {
+            System.out.println("Корзина переполнена");
+            return;
+        }
+        productList[currentLineOrder] = product;
+        currentLineOrder += 1;
     }
 
     public float getOrderSum() {
@@ -34,14 +37,37 @@ public class Order {
     }
 
     public void sortOrderBySum(){
-        productList.sort(new Comparator<Product>() {
-            @Override
-            public int compare(Product product1, Product product2) {
-                if (product1.getBarCode().getPrice() == product1.getBarCode().getPrice()) return 0;
-                else if (product1.getBarCode().getPrice()> product1.getBarCode().getPrice()) return 1;
-                else return -1;
+        boolean wasMove;
+        Product buffer;
+        do {
+            wasMove = false;
+            for (int i = 0, j = 1; j < productList.length; ++i, ++j) {
+                if (productList[j] != null) {
+                    if (productList[i] == null) {
+                        productList[i] = productList[j];
+                        productList[j] = null;
+                        wasMove = true;
+                    } else if (productList[j].getBarCode().getPrice() > productList[i].getBarCode().getPrice()){
+                        buffer = productList[i];
+                        productList[i] = productList[j];
+                        productList[j] = buffer;
+                        wasMove = true;
+                    }
+                }
             }
-        });
+
+        } while (wasMove);
+    }
+
+    public boolean existFreePlace(){
+        int i = 0;
+        while (i < productList.length){
+            if (productList[i] == null){
+                return true;
+            }
+            i++;
+        }
+        return false;
     }
 
     public void createPackingTask(Storage storage) {
@@ -52,11 +78,6 @@ public class Order {
     public void packProducts(Storage storage){
         setProductsState("Упакован для доставки на месте хранения " + storage.getName());
         state = "Заказ собран";
-        for (Product product:productList) {
-            if (storage.getSetOfProducts().contains(product)){
-                storage.getSetOfProducts().remove(product);
-            }
-        }
     }
 
     public Delivery sendToDelivery() {
@@ -88,10 +109,20 @@ public class Order {
     }
 
     public void setProductsState(String state) {
-        for (Product product: productList){
-            product.setState(state);
+        for (int i =0; i < productList.length; ++i) {
+            if ( productList[i] != null) {
+                productList[i].setState(state);
+            }
         }
     }
+
+//    public void setProductsState(String state) {
+//        for (product currentProduct : productList) {
+//            if (currentProduct != null) {
+//                currentProduct.setState(state);
+//            }
+//        }
+//    }
 
     public String getDeliveryDate() {
         return deliveryDate;
