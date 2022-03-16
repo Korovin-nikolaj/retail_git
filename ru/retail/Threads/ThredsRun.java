@@ -5,11 +5,12 @@ import ru.retail.product.Product;
 public class ThredsRun {
 
     private static Product product;
+
     public static void main(String[] args) {
         product = new Product("Уникальный товар", "000001", 100);
-        for (int i = 0; i < 10; i++ ){
-           ClientSession clientSession = new ClientSession("Thread #" + i);
-                   clientSession.start();
+        for (int i = 0; i < 10; i++) {
+            ClientSession clientSession = new ClientSession("Thread #" + i);
+            clientSession.start();
         }
         try {
             Thread.sleep(1000);
@@ -18,7 +19,7 @@ public class ThredsRun {
         }
         System.out.println("-------Start second variant-------");
         SessionCounter sessionCounter = SessionCounter.getInstance();
-        for (int i = 0; i < 10; i++ ){
+        for (int i = 0; i < 10; i++) {
             Thread myThread = new Thread(new ClientSessionThroughRunnable(sessionCounter), "Thread #" + i);
             myThread.start();
         }

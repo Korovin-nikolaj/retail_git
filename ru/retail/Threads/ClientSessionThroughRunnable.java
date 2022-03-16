@@ -4,9 +4,10 @@ public class ClientSessionThroughRunnable implements Runnable {
 
     SessionCounter sessionCounter;
 
-    ClientSessionThroughRunnable(SessionCounter sessionCounter){
+    ClientSessionThroughRunnable(SessionCounter sessionCounter) {
         this.sessionCounter = sessionCounter;
     }
+
     @Override
     public void run() {
         synchronized (sessionCounter) {

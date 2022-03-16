@@ -10,7 +10,7 @@ public class SessionCounter {
     }
 
     public static SessionCounter getInstance() {
-        if (instance == null){
+        if (instance == null) {
             instance = new SessionCounter();
         }
         return instance;
